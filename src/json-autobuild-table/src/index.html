@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
 
-    <script type="module" src="/build/json-autobuild-table.esm.js"></script>
-    <script nomodule src="/build/json-autobuild-table.js"></script>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
-      </style>
-  </head>
-  <body>
-    <json-autobuild-table
-    apiurl="https://thesimpsonsquoteapi.glitch.me/quotes?"
-    columns='["character","quote"]'
-    filters='["character"]'
-    limitqueryparameter="count"    
-  />  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
+
+  <script type="module" src="/build/json-autobuild-table.esm.js"></script>
+  <script nomodule src="/build/json-autobuild-table.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+  </style>
+</head>
+
+<body>
+  <json-autobuild-table apiurl="https://apidgdv.gent.be/dossier/magda-doc-api/v1/communicationplatform"
+    headers='{"userKey":""}'
+    columns='["bestandsNaam","naam","aangetekend","aanbieding","tijdstipAanbiedingMagda","tijdstipVerzendingMagda","status","trackAndTrace","adres","communicatiePlatformId","magdaId","tijdstipStatus"]'
+    filters='["bestandsNaam","naam","aangetekend","aanbieding","tijdstipAanbiedingMagda","tijdstipVerzendingMagda","status","trackAndTrace","adres","communicatiePlatformId","magdaId","tijdstipStatus"]'
+    limitqueryparameter="limit" 
+    offsetqueryparameter="offset" 
+    totalparameter="total" />
+</body>
+
 </html>
-
-

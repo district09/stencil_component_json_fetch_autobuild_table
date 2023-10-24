@@ -10,6 +10,7 @@ export namespace Components {
         "apiurl": string;
         "columns": string;
         "filters": string;
+        "headers": string;
         "limitqueryparameter": string;
         "offsetqueryparameter": string;
         "totalparameter": string;
@@ -31,6 +32,7 @@ declare namespace LocalJSX {
         "apiurl": string;
         "columns"?: string;
         "filters"?: string;
+        "headers"?: string;
         "limitqueryparameter"?: string;
         "offsetqueryparameter"?: string;
         "totalparameter"?: string;

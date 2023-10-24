@@ -10,6 +10,7 @@ export class JsonAutobuildTable {
   @Prop() columns: string;
   @Prop() filters : string;  
   @Prop() totalparameter : string;
+  @Prop() headers: string;
   
   @Prop() limitqueryparameter: string ; 
   @Prop() offsetqueryparameter: string ;
@@ -47,6 +48,10 @@ export class JsonAutobuildTable {
   async fetchData() {
     const url = new URL(this.apiurl);
     const params = new URLSearchParams(url.search);
+    const requestHeaders: HeadersInit = new Headers();
+    const parsedHeaders = JSON.parse(this.headers);
+
+    Object.entries(parsedHeaders).forEach(([key, value]) => { requestHeaders.set(key, value.toString()); });
 
     for (const [column, filterValue] of this.filtersApplied) {
       params.set(column, filterValue || '');
@@ -60,7 +65,7 @@ export class JsonAutobuildTable {
     }
 
     url.search = params.toString();
-    const response = await fetch(url.toString());
+    const response = await fetch(url.toString(), { headers: requestHeaders });
     const jsonData = await response.json();    
     this.totalItems = jsonData[this.totalparameter] ?? 1;  
     // Update the data based on the received JSON
@@ -163,8 +168,9 @@ export class JsonAutobuildTable {
   }
 
   renderPagination() {
-    const totalPages = Math.ceil(this.totalItems / this.limit);
 
+    let totalPages = Math.ceil(this.totalItems / this.limit);
+ 
     return (
       <div class="pagination">
         <button disabled={this.currentPage === 1} onClick={() => (
